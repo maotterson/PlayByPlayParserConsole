@@ -18,9 +18,14 @@ void linqMapping(string filePath)
                    });
     foreach(var play in playData)
     {
-        Console.WriteLine(play.Summary);
-
         // extract data from summary by type
+        string[] playStrings = play.Summary.Split(' ');
+        if(playStrings[0] == "Penalty")
+        {
+            Console.WriteLine("*");
+            continue;
+        }
+        Console.WriteLine(playStrings[0] + " " + playStrings[1]);
 
     }
 }
