@@ -6,5 +6,5 @@ Based on verbiage in a play's detail category, contents such as involved player 
 ### Kickoff
 
 ```
-Robbie Gould kicks off 49 yards returned by Amari Rodgers for 15 yards (tackle by Demetrius Flannigan-Fowles)
+==Robbie Gould== kicks off 49 yards returned by Amari Rodgers for 15 yards (tackle by Demetrius Flannigan-Fowles)
 ```
