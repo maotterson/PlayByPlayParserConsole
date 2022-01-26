@@ -11,9 +11,9 @@ Regular expressions would thus be an intuitive option for categorization. Exampl
 Robbie Gould kicks off 49 yards returned by Amari Rodgers for 15 yards (tackle by Demetrius Flannigan-Fowles)
 ```
 
-Attribute  | Value
-| :---: | :---:
-Kicker | "Robbie Gould"
+Attribute  | Value | Regex Pattern
+| :---: | :---: | :---:
+Kicker | "Robbie Gould" | ^.*?(?= kicks off)
 KickYards | 49
 Returner | "Amari Rodgers"
 ReturnYards | 15
