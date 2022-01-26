@@ -6,12 +6,15 @@ Regular expressions would thus be an intuitive option for categorization. Exampl
 
 ### Kickoff
 
+- [x] Key phrase: __kicks off__
 ```
 Robbie Gould kicks off 49 yards returned by Amari Rodgers for 15 yards (tackle by Demetrius Flannigan-Fowles)
 ```
-Key phrase: "kicks off"
-Kicker -> Robbie Gould
-KickYards -> 49
-Returner -> Amari Rodgers
-ReturnYards -> 15
-Tacklers -> Demetrius Flannigan-Fowles
+
+Attribute  | Value
+| :---: | :---:
+Kicker | "Robbie Gould"
+KickYards | 49
+Returner | "Amari Rodgers"
+ReturnYards | 15
+Tacklers | "Demetrius Flannigan-Fowles"
