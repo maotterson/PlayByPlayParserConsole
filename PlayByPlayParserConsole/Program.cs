@@ -1,29 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Microsoft.VisualBasic.FileIO;
-
-string filePath = @".\Sample Data\GameDataFBRef.csv";
-
-//outputFileIO(filePath);
+﻿string filePath = @".\Sample Data\GameDataFBRef.csv";
 linqMapping(filePath);
-
-void outputFileIO(string filePath)
-{
-    using (TextFieldParser parser = new TextFieldParser(filePath))
-    {
-        parser.TextFieldType = FieldType.Delimited;
-        parser.SetDelimiters(",");
-        while (!parser.EndOfData)
-        {
-            //Processing row
-            string[] fields = parser.ReadFields();
-            foreach (string field in fields)
-            {
-                Console.Write(field + " ");
-            }
-        }
-        Console.ReadLine();
-    }
-}
 
 void linqMapping(string filePath)
 {
@@ -43,5 +19,8 @@ void linqMapping(string filePath)
     foreach(var play in playData)
     {
         Console.WriteLine(play.Summary);
+
+        // extract data from summary by type
+
     }
 }
