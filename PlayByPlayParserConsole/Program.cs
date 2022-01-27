@@ -1,4 +1,5 @@
-﻿using PlayByPlayParserConsole.Models;
+﻿using PlayByPlayParserConsole;
+using PlayByPlayParserConsole.Models;
 
 string filePath = @".\Sample Data\GameDataFBRef.csv";
 IEnumerable<Play> playList = linqMapping(filePath);
@@ -20,7 +21,8 @@ IEnumerable<Play> linqMapping(string filePath)
                        Down = x[2],
                        ToGo = x[3],
                        Location = x[4],
-                       Summary = x[5]
+                       Summary = x[5],
+                       PlayEvent = PlayEventFactory.ExtractPlayEvent(x[5])
                    });
     return playData;
 }
@@ -32,6 +34,11 @@ void outputPlayList(IEnumerable<Play> playList)
 {
     foreach (Play play in playList)
     {
-        Console.WriteLine(play.Time);
+        Console.Write($"{play.Quarter} {play.Time}");
+        if(play.PlayEvent != null)
+        {
+            Console.Write($" {play.PlayEvent.PlayType}");
+        }
+        Console.WriteLine();
     }
 }

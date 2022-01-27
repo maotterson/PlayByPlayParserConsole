@@ -15,5 +15,7 @@ namespace PlayByPlayParserConsole.Models
         public string ToGo { get; set; }
         public string Location { get; set; }
         public string Summary { get; set; }
+
+        public IPlayEvent PlayEvent { get; set; }
     }
 }
