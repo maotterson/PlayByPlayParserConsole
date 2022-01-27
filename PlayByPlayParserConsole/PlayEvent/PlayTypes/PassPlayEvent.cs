@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace PlayByPlayParserConsole.PlayEvent
 {
-    internal class KickPlayEvent : IPlayEvent
+    internal class PassPlayEvent : IPlayEvent
     {
-        public string PlayType { get; set; } = "Kickoff";
+        public string PlayType { get; set; } = "Pass";
     }
 }

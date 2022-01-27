@@ -15,9 +15,17 @@ namespace PlayByPlayParserConsole
             IPlayEvent? playEvent = null;
 
             // Kickoff
-            if(summary.Contains("kicks off"))
+            if (summary.Contains("kicks off"))
             {
-                playEvent = new KickPlayEvent();
+                playEvent = new KickoffEvent();
+            }
+            else if (summary.Contains("pass"))
+            {
+                playEvent = new PassPlayEvent();
+            }
+            else if (summary.Contains("guard") || summary.Contains("end")||summary.Contains("up the middle")||summary.Contains("left tackle")||summary.Contains("right tackle"))
+            {
+                playEvent = new RunPlayEvent();
             }
 
             return playEvent;
