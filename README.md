@@ -30,5 +30,33 @@ Attribute  | Value | Regex Pattern
 | :---: | :---: | :---:
 Carrier | "Aaron Jones" | ^.*?(?= up the middle)
 RushingYards | 4 | (?<=for )(.*?)(?= yards)
-Direction | Direction.Middle | 
+RushDirection | Direction.Middle | 
 Tacklers | "D.J. Jones" | (?<=tackle by )(.*)(?=\))
+
+
+### Pass (Complete)
+- [x] Key phrase: __pass complete__
+```
+Aaron Rodgers pass complete short right to Davante Adams for 14 yards (tackle by Dontae Johnson)
+```
+
+Attribute  | Value | Regex Pattern
+| :---: | :---: | :---:
+Passer | "Aaron Rodgers" | ^.*?(?= pass)
+Receiver | "Davante Adams" | (?<=to )(.*?)(?= for)
+PassYards | 14 | (?<=for )(.*?)(?= yards)
+PassDirection | Direction.ShortRight | 
+Tacklers | "D.J. Jones" | (?<=tackle by )(.*)(?=\))
+
+
+### Pass (Incomplete)
+- [x] Key phrase: __pass incomplete__
+```
+Aaron Rodgers pass incomplete short middle intended for Aaron Jones
+```
+
+Attribute  | Value | Regex Pattern
+| :---: | :---: | :---:
+Passer | "Aaron Rodgers" | ^.*?(?= pass)
+Receiver | "Aaron Jones" | (?<=intended for )(.*?)
+PassDirection | Direction.ShortMiddle | 
