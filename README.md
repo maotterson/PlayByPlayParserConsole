@@ -20,3 +20,15 @@ ReturnYards | 15 | (?<=for )(.*?)(?= yards)
 Tacklers | "Demetrius Flannigan-Fowles" | (?<=tackle by )(.*)(?=\))
 
 
+### Run
+- [x] Key phrases: __up the middle__, __right/left guard__, __right/left end__, __right/left tackle__
+```
+Aaron Jones up the middle for 4 yards (tackle by D.J. Jones)
+```
+
+Attribute  | Value | Regex Pattern
+| :---: | :---: | :---:
+Carrier | "Aaron Jones" | ^.*?(?= up the middle)
+RushingYards | 4 | (?<=for )(.*?)(?= yards)
+Direction | Direction.Middle | 
+Tacklers | "D.J. Jones" | (?<=tackle by )(.*)(?=\))
