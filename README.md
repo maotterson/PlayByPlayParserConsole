@@ -46,7 +46,7 @@ Passer | "Aaron Rodgers" | ^.*?(?= pass)
 Receiver | "Davante Adams" | (?<=to )(.*?)(?= for)
 PassYards | 14 | (?<=for )(.*?)(?= yards)
 PassDirection | Direction.ShortRight | 
-Tacklers | "D.J. Jones" | (?<=tackle by )(.*)(?=\))
+Tacklers | "Dontae Johnson" | (?<=tackle by )(.*)(?=\))
 
 
 ### Pass (Incomplete)
@@ -60,3 +60,13 @@ Attribute  | Value | Regex Pattern
 Passer | "Aaron Rodgers" | ^.*?(?= pass)
 Receiver | "Aaron Jones" | (?<=intended for )(.*?)
 PassDirection | Direction.ShortMiddle | 
+
+### Kicks Extra Point
+```
+Mason Crosby kicks extra point good
+```
+
+Attribute  | Value | Regex Pattern
+| :---: | :---: | :---:
+Kicker | "Mason Crosby" | ^.*?(?= kicks extra)
+KickOutcome | Kick.Good | 
