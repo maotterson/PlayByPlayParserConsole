@@ -14,7 +14,9 @@ Robbie Gould kicks off 49 yards returned by Amari Rodgers for 15 yards (tackle b
 Attribute  | Value | Regex Pattern
 | :---: | :---: | :---:
 Kicker | "Robbie Gould" | ^.*?(?= kicks off)
-KickYards | 49
-Returner | "Amari Rodgers"
-ReturnYards | 15
-Tacklers | "Demetrius Flannigan-Fowles"
+KickYards | 49 | (?<=kicks off )(.*?)(?= yards)
+Returner | "Amari Rodgers" | (?<=returned by )(.*?)(?= for)
+ReturnYards | 15 | (?<=for )(.*?)(?= yards)
+Tacklers | "Demetrius Flannigan-Fowles" | (?<=tackle by )(.*)(?=\))
+
+
