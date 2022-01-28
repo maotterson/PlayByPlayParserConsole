@@ -13,4 +13,8 @@
     <None Remove="Sample Data\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="PlayEvent\PlayTypes\NewFolder\" />
+  </ItemGroup>
+
 </Project>
