@@ -1,5 +1,6 @@
 ﻿using PlayByPlayParserConsole;
 using PlayByPlayParserConsole.Models;
+using PlayByPlayParserConsole.PlayEvent;
 
 string filePath = @".\Sample Data\GameDataFBRef.csv";
 IEnumerable<Play> playList = linqMapping(filePath);
@@ -28,16 +29,29 @@ IEnumerable<Play> linqMapping(string filePath)
 }
 
 /// <summary>
-/// Sample method to output some data for each play
+/// Sample method to output some data for each play (for testing purposes)
 /// </summary>
 void outputPlayList(IEnumerable<Play> playList)
 {
     foreach (Play play in playList)
     {
         Console.Write($"{play.Quarter} {play.Time}");
-        if(play.PlayEvent != null)
+
+        // check to see if play type was successfully parsed
+        if(play.PlayEvent == null)
         {
-            Console.Write($" {play.PlayEvent.PlayType}");
+            Console.WriteLine();
+            continue;
+        }
+
+        // play type successfully parsed
+        Console.Write($" {play.PlayEvent.PlayType}");
+
+        // pass play
+        if (play.PlayEvent.PlayType == "Pass")
+        {
+            PassPlayEvent passPlay = (PassPlayEvent)play.PlayEvent;
+            Console.Write($" Complete: {passPlay.IsCompleted}, Passer: {passPlay.Passer}");
         }
         Console.WriteLine();
     }
