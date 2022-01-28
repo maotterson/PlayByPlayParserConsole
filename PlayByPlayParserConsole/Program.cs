@@ -55,7 +55,13 @@ void outputPlayList(IEnumerable<Play> playList)
 
             if (passPlay.IsIntercepted)
             {
-                Console.Write($" INTERCEPTED BY {passPlay.Interceptor}");
+                Console.Write($" INTERCEPTED BY {passPlay.Interceptor} ");
+            }
+
+            Console.Write("Tacklers: ");
+            foreach(string tackler in passPlay.Tacklers)
+            {
+                Console.Write(tackler + " ");
             }
         }
         Console.WriteLine();

@@ -22,7 +22,8 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
                 PassingYards = extractPassYards(summary),
                 IsIntercepted = isIntercepted(summary),
                 Interceptor = isIntercepted(summary) ? extractInterceptor(summary) : null,
-                PassType = extractPassType(summary)
+                PassType = extractPassType(summary),
+                Tacklers = extractTacklers(summary)
             };
 
             return playEvent;
@@ -106,5 +107,13 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
 
             return passType;
         }
+        private static string[] extractTacklers(string summary)
+        {
+            string regex = "(?<=tackle by )(.*)(?=[)])";
+
+            return new[] { Regex.Match(summary, regex).Value };
+
+        }
+
     }
 }
