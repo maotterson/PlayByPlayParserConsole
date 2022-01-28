@@ -51,7 +51,7 @@ void outputPlayList(IEnumerable<Play> playList)
         if (play.PlayEvent.PlayType == "Pass")
         {
             PassPlayEvent passPlay = (PassPlayEvent)play.PlayEvent;
-            Console.Write($" Complete: {passPlay.IsCompleted}, Passer: {passPlay.Passer}, Target: {passPlay.Target}");
+            Console.Write($" Complete: {passPlay.IsCompleted}, Yards: {passPlay.PassingYards}, Passer: {passPlay.Passer}, Target: {passPlay.Target}");
         }
         Console.WriteLine();
     }

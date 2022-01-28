@@ -18,7 +18,8 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
             {
                 IsCompleted = isCompleted(summary),
                 Passer = extractPasser(summary),
-                Target = extractTarget(summary, isCompleted(summary))
+                Target = extractTarget(summary, isCompleted(summary)),
+                PassingYards = extractPassYards(summary)
             };
 
             return playEvent;
@@ -50,6 +51,15 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
             }
 
             return Regex.Match(summary, regexIncomplete).Value;
+        }
+
+        private static int extractPassYards(string summary)
+        {
+            string regex = "(?<=for )(.*?)(?= yards)";
+
+            int.TryParse(Regex.Match(summary, regex).Value, out int yards);
+
+            return yards;
         }
     }
 }
