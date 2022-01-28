@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using PlayByPlayParserConsole.PlayEvent.Helpers;
 
 namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
 {
@@ -23,7 +24,7 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
                 IsIntercepted = isIntercepted(summary),
                 Interceptor = isIntercepted(summary) ? extractInterceptor(summary) : null,
                 PassType = extractPassType(summary),
-                Tacklers = extractTacklers(summary)
+                Tacklers = SummaryDataExtractor.extractTacklers(summary)
             };
 
             return playEvent;
@@ -106,13 +107,6 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
             }
 
             return passType;
-        }
-        private static string[] extractTacklers(string summary)
-        {
-            string regex = "(?<=tackle by )(.*)(?=[)])";
-
-            return new[] { Regex.Match(summary, regex).Value };
-
         }
 
     }
