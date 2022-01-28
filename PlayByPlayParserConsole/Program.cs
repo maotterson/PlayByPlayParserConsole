@@ -52,6 +52,11 @@ void outputPlayList(IEnumerable<Play> playList)
         {
             PassPlayEvent passPlay = (PassPlayEvent)play.PlayEvent;
             Console.Write($" Complete: {passPlay.IsCompleted}, Yards: {passPlay.PassingYards}, Passer: {passPlay.Passer}, Target: {passPlay.Target}");
+
+            if (passPlay.IsIntercepted)
+            {
+                Console.Write($" INTERCEPTED BY {passPlay.Interceptor}");
+            }
         }
         Console.WriteLine();
     }

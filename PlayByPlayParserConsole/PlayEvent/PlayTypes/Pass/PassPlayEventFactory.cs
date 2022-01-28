@@ -19,7 +19,9 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
                 IsCompleted = isCompleted(summary),
                 Passer = extractPasser(summary),
                 Target = extractTarget(summary, isCompleted(summary)),
-                PassingYards = extractPassYards(summary)
+                PassingYards = extractPassYards(summary),
+                IsIntercepted = isIntercepted(summary),
+                Interceptor = isIntercepted(summary) ? extractInterceptor(summary) : null
             };
 
             return playEvent;
@@ -60,6 +62,17 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
             int.TryParse(Regex.Match(summary, regex).Value, out int yards);
 
             return yards;
+        }
+        private static bool isIntercepted(string summary)
+        {
+            return summary.Contains("intercepted by");
+        }
+        private static string extractInterceptor(string summary)
+        {
+            string regex = "(?<=intercepted by )(.*?)(?= at)";
+
+            return Regex.Match(summary, regex).Value;
+
         }
     }
 }
