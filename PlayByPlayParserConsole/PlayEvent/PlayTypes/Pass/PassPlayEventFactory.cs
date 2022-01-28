@@ -21,7 +21,8 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
                 Target = extractTarget(summary, isCompleted(summary)),
                 PassingYards = extractPassYards(summary),
                 IsIntercepted = isIntercepted(summary),
-                Interceptor = isIntercepted(summary) ? extractInterceptor(summary) : null
+                Interceptor = isIntercepted(summary) ? extractInterceptor(summary) : null,
+                PassType = extractPassType(summary)
             };
 
             return playEvent;
@@ -73,6 +74,37 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
 
             return Regex.Match(summary, regex).Value;
 
+        }
+        private static PassType? extractPassType(string summary)
+        {
+            PassType? passType = null;
+
+            if(summary.Contains("short right"))
+            {
+                passType = PassType.ShortRight;
+            }
+            else if(summary.Contains("short left"))
+            {
+                passType = PassType.ShortLeft;
+            }
+            else if (summary.Contains("short middle"))
+            {
+                passType = PassType.ShortMiddle;
+            }
+            else if (summary.Contains("deep right"))
+            {
+                passType = PassType.DeepRight;
+            }
+            else if (summary.Contains("deep left"))
+            {
+                passType = PassType.DeepLeft;
+            }
+            else if (summary.Contains("deep middle"))
+            {
+                passType = PassType.DeepMiddle;
+            }
+
+            return passType;
         }
     }
 }
