@@ -17,7 +17,8 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
             playEvent = new PassPlayEvent
             {
                 IsCompleted = isCompleted(summary),
-                Passer = extractPasser(summary)
+                Passer = extractPasser(summary),
+                Target = extractTarget(summary, isCompleted(summary))
             };
 
             return playEvent;
@@ -36,6 +37,19 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
         {
             string regex = "^.*?(?= pass)";
             return Regex.Match(summary, regex).Value;
+        }
+
+        private static string extractTarget(string summary, bool isCompleted)
+        {
+            string regexComplete = "(?<=to )(.*?)(?= for)";
+            string regexIncomplete = "(?<=intended for )(.*)";
+
+            if (isCompleted)
+            {
+                return Regex.Match(summary, regexComplete).Value;
+            }
+
+            return Regex.Match(summary, regexIncomplete).Value;
         }
     }
 }
