@@ -13,20 +13,25 @@ namespace PlayByPlayParserConsole
 {
     internal static class PlayEventFactory
     {
+        public static Dictionary<string, Func<string, IPlayEvent>> PlayExtractorDictionary = new Dictionary<string, Func<string, IPlayEvent>>
+        {
+            { "kicks off", summary => KickoffEventFactory.Create(summary) },
+            { "pass", summary => PassPlayEventFactory.Create(summary) }
+        };
+
         public static IPlayEvent? ExtractPlayEvent(string summary)
         {
             IPlayEvent? playEvent = null;
 
-            // Kickoff
-            if (summary.Contains("kicks off"))
+            foreach(string keyPhrase in PlayExtractorDictionary.Keys)
             {
-                playEvent = KickoffEventFactory.Create(summary);
+                if (summary.Contains(keyPhrase))
+                {
+                    playEvent = PlayExtractorDictionary[keyPhrase](summary);
+                    return playEvent;
+                }
             }
-            else if (summary.Contains("pass"))
-            {
-                playEvent = PassPlayEventFactory.Create(summary);
-            }
-            else if (SummaryDataExtractor.RunTypeRegexDictionary.Values.Any(summary.Contains))
+            if (SummaryDataExtractor.RunTypeRegexDictionary.Values.Any(summary.Contains))
             {
                 playEvent = RunPlayEventFactory.Create(summary);
             }
