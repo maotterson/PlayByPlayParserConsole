@@ -16,5 +16,11 @@ namespace PlayByPlayParserConsole.PlayEvent
         public string[]? Tacklers { get; set; }
         public RunType? RunType { get; set; }
 
+        public override string ToString()
+        {
+            string runString = $"Run - Type: {RunType}, Carrier: {Carrier}, Yards: {RushingYards}";
+            return runString;
+        }
+
     }
 }

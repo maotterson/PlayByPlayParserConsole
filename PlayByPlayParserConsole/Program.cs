@@ -45,33 +45,6 @@ void outputPlayList(IEnumerable<Play> playList)
         }
 
         // play type successfully parsed
-        Console.Write($" {play.PlayEvent.PlayType}");
-
-        // pass play
-        if (play.PlayEvent.PlayType == "Pass")
-        {
-            PassPlayEvent passPlay = (PassPlayEvent)play.PlayEvent;
-            Console.Write($" Complete: {passPlay.IsCompleted}, Type: {passPlay.PassType} Yards: {passPlay.PassingYards}, Passer: {passPlay.Passer}, Target: {passPlay.Target}");
-
-            if (passPlay.IsIntercepted)
-            {
-                Console.Write($" INTERCEPTED BY {passPlay.Interceptor} ");
-            }
-
-            Console.Write("Tacklers: ");
-            foreach(string tackler in passPlay.Tacklers)
-            {
-                Console.Write(tackler + " ");
-            }
-        }
-
-        // run play
-        if (play.PlayEvent.PlayType == "Run")
-        {
-            RunPlayEvent runPlay = (RunPlayEvent)play.PlayEvent;
-            Console.Write($" Carrier: {runPlay.Carrier}, Yards: {runPlay.RushingYards}, Type: {runPlay.RunType}");
-        }
-
-        Console.WriteLine();
+        Console.Write($" {play.PlayEvent}\n");
     }
 }
