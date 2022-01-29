@@ -8,8 +8,30 @@ using System.Threading.Tasks;
 
 namespace PlayByPlayParserConsole.PlayEvent.Helpers
 {
-    internal static partial class SummaryDataExtractor 
+    internal static partial class SummaryDataExtractor
     {
+        public static IDictionary<PassType?, string> PassTypeRegexDictionary = new Dictionary<PassType?, string>
+        {
+            { PassType.ShortRight, "short right" },
+            { PassType.ShortMiddle, "short middle" },
+            { PassType.ShortLeft, "short left" },
+            { PassType.DeepRight, "deep right" },
+            { PassType.DeepMiddle, "deep middle" },
+            { PassType.DeepLeft, "deep left" },
+        };
+        public static PassType? extractPassType(string summary)
+        {
+            foreach (string passDescription in PassTypeRegexDictionary.Values)
+            {
+                if (summary.Contains(passDescription))
+                {
+                    return PassTypeRegexDictionary.FirstOrDefault(x => x.Value == passDescription).Key;
+                }
+            }
+
+            return null;
+        }
+
         public static bool isCompleted(string summary)
         {
             if (summary.Contains("pass complete"))
@@ -55,37 +77,6 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
 
             return Regex.Match(summary, regex).Value;
 
-        }
-        public static PassType? extractPassType(string summary)
-        {
-            PassType? passType = null;
-
-            if (summary.Contains("short right"))
-            {
-                passType = PassType.ShortRight;
-            }
-            else if (summary.Contains("short left"))
-            {
-                passType = PassType.ShortLeft;
-            }
-            else if (summary.Contains("short middle"))
-            {
-                passType = PassType.ShortMiddle;
-            }
-            else if (summary.Contains("deep right"))
-            {
-                passType = PassType.DeepRight;
-            }
-            else if (summary.Contains("deep left"))
-            {
-                passType = PassType.DeepLeft;
-            }
-            else if (summary.Contains("deep middle"))
-            {
-                passType = PassType.DeepMiddle;
-            }
-
-            return passType;
         }
     }
 }
