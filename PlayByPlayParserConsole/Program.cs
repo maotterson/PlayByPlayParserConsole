@@ -64,6 +64,14 @@ void outputPlayList(IEnumerable<Play> playList)
                 Console.Write(tackler + " ");
             }
         }
+
+        // run play
+        if (play.PlayEvent.PlayType == "Run")
+        {
+            RunPlayEvent runPlay = (RunPlayEvent)play.PlayEvent;
+            Console.Write($" Carrier: {runPlay.Carrier}, Yards: {runPlay.RushingYards}, Type: {runPlay.RunType}");
+        }
+
         Console.WriteLine();
     }
 }

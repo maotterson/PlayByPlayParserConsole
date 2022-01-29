@@ -17,96 +17,17 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
 
             playEvent = new PassPlayEvent
             {
-                IsCompleted = isCompleted(summary),
-                Passer = extractPasser(summary),
-                Target = extractTarget(summary, isCompleted(summary)),
-                PassingYards = extractPassYards(summary),
-                IsIntercepted = isIntercepted(summary),
-                Interceptor = isIntercepted(summary) ? extractInterceptor(summary) : null,
-                PassType = extractPassType(summary),
+                IsCompleted = SummaryDataExtractor.isCompleted(summary),
+                Passer = SummaryDataExtractor.extractPasser(summary),
+                Target = SummaryDataExtractor.extractTarget(summary, SummaryDataExtractor.isCompleted(summary)),
+                PassingYards = SummaryDataExtractor.extractPassYards(summary),
+                IsIntercepted = SummaryDataExtractor.isIntercepted(summary),
+                Interceptor = SummaryDataExtractor.isIntercepted(summary) ? SummaryDataExtractor.extractInterceptor(summary) : null,
+                PassType = SummaryDataExtractor.extractPassType(summary),
                 Tacklers = SummaryDataExtractor.extractTacklers(summary)
             };
 
             return playEvent;
-        }
-
-        // helper methods
-        private static bool isCompleted(string summary)
-        {
-            if (summary.Contains("pass complete"))
-            {
-                return true;
-            }
-            return false;
-        }
-        private static string extractPasser(string summary)
-        {
-            string regex = "^.*?(?= pass)";
-            return Regex.Match(summary, regex).Value;
-        }
-
-        private static string extractTarget(string summary, bool isCompleted)
-        {
-            string regexComplete = "(?<=to )(.*?)(?= for)";
-            string regexIncomplete = "(?<=intended for )(.*)";
-
-            if (isCompleted)
-            {
-                return Regex.Match(summary, regexComplete).Value;
-            }
-
-            return Regex.Match(summary, regexIncomplete).Value;
-        }
-
-        private static int extractPassYards(string summary)
-        {
-            string regex = "(?<=for )(.*?)(?= yards)";
-
-            int.TryParse(Regex.Match(summary, regex).Value, out int yards);
-
-            return yards;
-        }
-        private static bool isIntercepted(string summary)
-        {
-            return summary.Contains("intercepted by");
-        }
-        private static string extractInterceptor(string summary)
-        {
-            string regex = "(?<=intercepted by )(.*?)(?= at)";
-
-            return Regex.Match(summary, regex).Value;
-
-        }
-        private static PassType? extractPassType(string summary)
-        {
-            PassType? passType = null;
-
-            if(summary.Contains("short right"))
-            {
-                passType = PassType.ShortRight;
-            }
-            else if(summary.Contains("short left"))
-            {
-                passType = PassType.ShortLeft;
-            }
-            else if (summary.Contains("short middle"))
-            {
-                passType = PassType.ShortMiddle;
-            }
-            else if (summary.Contains("deep right"))
-            {
-                passType = PassType.DeepRight;
-            }
-            else if (summary.Contains("deep left"))
-            {
-                passType = PassType.DeepLeft;
-            }
-            else if (summary.Contains("deep middle"))
-            {
-                passType = PassType.DeepMiddle;
-            }
-
-            return passType;
         }
 
     }

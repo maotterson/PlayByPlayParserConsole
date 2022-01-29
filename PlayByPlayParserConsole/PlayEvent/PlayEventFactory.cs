@@ -26,7 +26,7 @@ namespace PlayByPlayParserConsole
             }
             else if (summary.Contains("guard") || summary.Contains("end")||summary.Contains("up the middle")||summary.Contains("left tackle")||summary.Contains("right tackle"))
             {
-                playEvent = new RunPlayEvent();
+                playEvent = RunPlayEventFactory.Create(summary);
             }
 
             return playEvent;
