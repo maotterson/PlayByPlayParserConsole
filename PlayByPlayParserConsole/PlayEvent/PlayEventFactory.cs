@@ -1,5 +1,6 @@
 ﻿using PlayByPlayParserConsole.Models;
 using PlayByPlayParserConsole.PlayEvent;
+using PlayByPlayParserConsole.PlayEvent.Helpers;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace PlayByPlayParserConsole
             {
                 playEvent = PassPlayEventFactory.Create(summary);
             }
-            else if (summary.Contains("guard") || summary.Contains("end")||summary.Contains("up the middle")||summary.Contains("left tackle")||summary.Contains("right tackle"))
+            else if (SummaryDataExtractor.RunTypeRegexDictionary.Values.Any(summary.Contains))
             {
                 playEvent = RunPlayEventFactory.Create(summary);
             }

@@ -10,7 +10,7 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
 {
     internal static partial class SummaryDataExtractor
     {
-        private static IDictionary<RunType?, string> RunTypeRegexDictionary = new Dictionary<RunType?, string>
+        public static IDictionary<RunType?, string> RunTypeRegexDictionary = new Dictionary<RunType?, string>
         {
             { RunType.LeftEnd, "left end" },
             { RunType.LeftTackle, "left tackle" },
