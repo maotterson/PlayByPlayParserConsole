@@ -23,6 +23,7 @@ namespace PlayByPlayParserConsole
         {
             IPlayEvent? playEvent = null;
 
+            // check for the type of play based on keyword phrases
             foreach(string keyPhrase in PlayExtractorDictionary.Keys)
             {
                 if (summary.Contains(keyPhrase))
