@@ -1,6 +1,7 @@
 ﻿using PlayByPlayParserConsole.Models;
 using PlayByPlayParserConsole.PlayEvent;
 using PlayByPlayParserConsole.PlayEvent.Helpers;
+using PlayByPlayParserConsole.PlayEvent.PlayTypes.Kickoff;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace PlayByPlayParserConsole
             // Kickoff
             if (summary.Contains("kicks off"))
             {
-                playEvent = new KickoffEvent();
+                playEvent = KickoffEventFactory.Create(summary);
             }
             else if (summary.Contains("pass"))
             {

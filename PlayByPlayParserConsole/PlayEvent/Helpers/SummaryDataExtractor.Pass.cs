@@ -31,7 +31,6 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
 
             return null;
         }
-
         public static bool isCompleted(string summary)
         {
             if (summary.Contains("pass complete"))
@@ -45,7 +44,6 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
             string regex = "^.*?(?= pass)";
             return Regex.Match(summary, regex).Value;
         }
-
         public static string extractTarget(string summary, bool isCompleted)
         {
             string regexComplete = "(?<=to )(.*?)(?= for)";
@@ -58,7 +56,6 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
 
             return Regex.Match(summary, regexIncomplete).Value;
         }
-
         public static int extractPassYards(string summary)
         {
             string regex = "(?<=for )(.*?)(?= yards)";

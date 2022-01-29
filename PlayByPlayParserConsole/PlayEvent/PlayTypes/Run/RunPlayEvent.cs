@@ -18,7 +18,7 @@ namespace PlayByPlayParserConsole.PlayEvent
 
         public override string ToString()
         {
-            string runString = $"Run - Type: {RunType}, Carrier: {Carrier}, Yards: {RushingYards}";
+            string runString = $"{PlayType} - Type: {RunType}, Carrier: {Carrier}, Yards: {RushingYards}";
             return runString;
         }
 

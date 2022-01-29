@@ -21,7 +21,7 @@ namespace PlayByPlayParserConsole.PlayEvent
         public PassType? PassType { get; set; }
         public override string ToString()
         {
-            string passString = $"Pass - Type: {PassType}, Passer: {Passer}, Target: {Target}";
+            string passString = $"{PlayType} - Type: {PassType}, Passer: {Passer}, Target: {Target}";
             if (IsCompleted)
             {
                 passString += $", COMPLETED for {PassingYards} yards";
