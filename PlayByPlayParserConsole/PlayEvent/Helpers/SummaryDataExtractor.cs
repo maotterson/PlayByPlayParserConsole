@@ -23,5 +23,10 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
             return Regex.Match(summary, regex).Value;
         }
 
+        public static bool extractIsTouchdown(string summary)
+        {
+            return summary.Contains(" touchdown");
+        }
+
     }
 }
