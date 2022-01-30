@@ -13,8 +13,4 @@
     <None Remove="Sample Data\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="PlayEvent\Factories\" />
-  </ItemGroup>
-
 </Project>
