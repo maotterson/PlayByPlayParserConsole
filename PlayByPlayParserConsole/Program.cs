@@ -35,12 +35,14 @@ void outputPlayList(IEnumerable<Play> playList)
 {
     foreach (Play play in playList)
     {
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Write($"{play.Quarter} {play.Time}");
 
         // check to see if play type was successfully parsed
         if(play.PlayEvent == null)
         {
-            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($" Not Detected... {play.Summary}\n");
             continue;
         }
 
