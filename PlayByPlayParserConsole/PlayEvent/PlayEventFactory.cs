@@ -15,8 +15,15 @@ namespace PlayByPlayParserConsole
     {
         public static Dictionary<string, Func<string, IPlayEvent>> PlayExtractorDictionary = new Dictionary<string, Func<string, IPlayEvent>>
         {
-            { "kicks off", summary => KickoffEventFactory.Create(summary) },
-            { "pass", summary => PassPlayEventFactory.Create(summary) }
+            { "kicks off", x => KickoffEventFactory.Create(x) },
+            { "pass", x => PassPlayEventFactory.Create(x) },
+            { "up the middle" , x => RunPlayEventFactory.Create(x) },
+            { "right end" , x => RunPlayEventFactory.Create(x) },
+            { "left end" , x => RunPlayEventFactory.Create(x) },
+            { "right tackle" , x => RunPlayEventFactory.Create(x) },
+            { "left tackle" , x => RunPlayEventFactory.Create(x) },
+            { "right guard" , x => RunPlayEventFactory.Create(x) },
+            { "left guard" , x => RunPlayEventFactory.Create(x) }
         };
 
         public static IPlayEvent? ExtractPlayEvent(string summary)
@@ -31,10 +38,6 @@ namespace PlayByPlayParserConsole
                     playEvent = PlayExtractorDictionary[keyPhrase](summary);
                     return playEvent;
                 }
-            }
-            if (SummaryDataExtractor.RunTypeRegexDictionary.Values.Any(summary.Contains))
-            {
-                playEvent = RunPlayEventFactory.Create(summary);
             }
 
             return playEvent;
