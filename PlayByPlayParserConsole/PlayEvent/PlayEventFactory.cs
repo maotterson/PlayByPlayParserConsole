@@ -13,7 +13,7 @@ namespace PlayByPlayParserConsole
 {
     internal static class PlayEventFactory
     {
-        public static Dictionary<string, Func<string, IPlayEvent>> PlayExtractorDictionary = new Dictionary<string, Func<string, IPlayEvent>>
+        public static Dictionary<string, Func<string, IPlayEvent>> PlayKeywordDictionary = new Dictionary<string, Func<string, IPlayEvent>>
         {
             { "kicks off", x => KickoffEventFactory.Create(x) },
             { "pass", x => PassPlayEventFactory.Create(x) },
@@ -31,11 +31,11 @@ namespace PlayByPlayParserConsole
             IPlayEvent? playEvent = null;
 
             // check for the type of play based on keyword phrases
-            foreach(string keyPhrase in PlayExtractorDictionary.Keys)
+            foreach(string keyPhrase in PlayKeywordDictionary.Keys)
             {
                 if (summary.Contains(keyPhrase))
                 {
-                    playEvent = PlayExtractorDictionary[keyPhrase](summary);
+                    playEvent = PlayKeywordDictionary[keyPhrase](summary);
                     return playEvent;
                 }
             }
