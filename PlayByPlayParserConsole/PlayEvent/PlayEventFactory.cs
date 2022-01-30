@@ -3,6 +3,7 @@ using PlayByPlayParserConsole.PlayEvent;
 using PlayByPlayParserConsole.PlayEvent.Helpers;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Kickoff;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass;
+using PlayByPlayParserConsole.PlayEvent.PlayTypes.Penalty;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace PlayByPlayParserConsole
             { "right tackle" , x => RunPlayEventFactory.Create(x) },
             { "left tackle" , x => RunPlayEventFactory.Create(x) },
             { "right guard" , x => RunPlayEventFactory.Create(x) },
-            { "left guard" , x => RunPlayEventFactory.Create(x) }
+            { "left guard" , x => RunPlayEventFactory.Create(x) },
+            { "Penalty", x => PenaltyEventFactory.Create(x) }
         };
 
         public static IPlayEvent? ExtractPlayEvent(string summary)

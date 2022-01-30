@@ -10,19 +10,21 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
 {
     internal static class PassPlayEventFactory
     {
-
         public static PassPlayEvent? Create(string summary)
         {
             PassPlayEvent? playEvent = null;
 
+            bool isCompleted = SummaryDataExtractor.isCompleted(summary);
+            bool isIntercepted = SummaryDataExtractor.isIntercepted(summary);
+
             playEvent = new PassPlayEvent
             {
-                IsCompleted = SummaryDataExtractor.isCompleted(summary),
+                IsCompleted = isCompleted,
                 Passer = SummaryDataExtractor.extractPasser(summary),
-                Target = SummaryDataExtractor.extractTarget(summary, SummaryDataExtractor.isCompleted(summary)),
+                Target = SummaryDataExtractor.extractTarget(summary, isCompleted),
                 PassingYards = SummaryDataExtractor.extractPassYards(summary),
-                IsIntercepted = SummaryDataExtractor.isIntercepted(summary),
-                Interceptor = SummaryDataExtractor.isIntercepted(summary) ? SummaryDataExtractor.extractInterceptor(summary) : null,
+                IsIntercepted = isIntercepted,
+                Interceptor = isIntercepted ? SummaryDataExtractor.extractInterceptor(summary) : null,
                 PassType = SummaryDataExtractor.extractPassType(summary),
                 Tacklers = SummaryDataExtractor.extractTacklers(summary)
             };

@@ -15,10 +15,12 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
         {
             RunPlayEvent? playEvent = null;
 
+            RunType? runType = SummaryDataExtractor.extractRunType(summary);
+
             playEvent = new RunPlayEvent
             {
-                Carrier = SummaryDataExtractor.extractCarrier(summary, SummaryDataExtractor.extractRunType(summary)),
-                RunType = SummaryDataExtractor.extractRunType(summary),
+                Carrier = SummaryDataExtractor.extractCarrier(summary, runType),
+                RunType = runType,
                 RushingYards = SummaryDataExtractor.extractRushingYards(summary),
                 Tacklers = SummaryDataExtractor.extractTacklers(summary)
             };
