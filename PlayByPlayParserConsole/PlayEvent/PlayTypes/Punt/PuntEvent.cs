@@ -5,25 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlayByPlayParserConsole.PlayEvent
+namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Punt
 {
-    internal class FieldGoalEvent : IPlayEvent
+    internal class PuntEvent : IPlayEvent
     {
-        public string PlayType { get; set; } = "FieldGoal";
-        public bool IsTouchdown { get; set; }
-        public bool IsSuccessful { get; set; }
+        public string PlayType { get; set; } = "Punt";
 
-        //todo
+        public bool IsTouchdown { get; set; }
+
+        // todo
         public override string ToString()
         {
-            string fgString = $"{PlayType} - ";
+            string puntString = $"{PlayType} - ";
             // todo
-            return fgString;
+            return puntString;
         }
 
         public bool isScoringPlay()
         {
-            if (IsSuccessful || IsTouchdown)
+            if (IsTouchdown)
             {
                 return true;
             }
