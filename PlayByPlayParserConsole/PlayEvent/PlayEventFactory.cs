@@ -6,6 +6,7 @@ using PlayByPlayParserConsole.PlayEvent.PlayTypes.Kickoff;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Penalty;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Spike;
+using PlayByPlayParserConsole.PlayEvent.PlayTypes.TwoPoint;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,11 @@ namespace PlayByPlayParserConsole
             { "Penalty", x => PenaltyEventFactory.Create(x) },
             { "kicks extra point", x => ExtraPointFactory.Create(x) },
             { "sacked", x => SackFactory.Create(x) },
+            // todo: create event/factory for remaining plays
+            //{ "field goal", x => FieldGoalFactory.Create(x) },
+            //{ "kneels", x => KneelFactory.Create(x) },
+            //{ "punts", x => PuntFactory.Create(x) },
+            { "Two Point Attempt:", x => TwoPointFactory.Create(x) },
             { "spiked the ball", x => SpikeFactory.Create(x) }
         };
 

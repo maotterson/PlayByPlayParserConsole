@@ -13,4 +13,9 @@
     <None Remove="Sample Data\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="PlayEvent\PlayTypes\Kneel\" />
+    <Folder Include="PlayEvent\PlayTypes\Punt\" />
+  </ItemGroup>
+
 </Project>

@@ -8,6 +8,9 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
 {
     internal static partial class SummaryDataExtractor
     {
-        
+        public static bool extractIsSuccessfulTwoPoint(string summary)
+        {
+            return summary.Contains("conversion succeeds");
+        }
     }
 }
