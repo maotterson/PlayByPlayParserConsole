@@ -10,5 +10,14 @@ namespace PlayByPlayParserConsole.PlayEvent
     internal class FieldGoalEvent : IPlayEvent
     {
         public string PlayType { get; set; } = "FieldGoal";
+        public bool IsTouchdown { get; set; }
+        public bool isScoringPlay()
+        {
+            if (IsTouchdown)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

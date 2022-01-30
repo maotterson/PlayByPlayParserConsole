@@ -24,6 +24,7 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
                 Target = SummaryDataExtractor.extractTarget(summary, isCompleted),
                 PassingYards = SummaryDataExtractor.extractPassYards(summary),
                 IsIntercepted = isIntercepted,
+                IsTouchdown = SummaryDataExtractor.extractIsTouchdown(summary),
                 Interceptor = isIntercepted ? SummaryDataExtractor.extractInterceptor(summary) : null,
                 PassType = SummaryDataExtractor.extractPassType(summary),
                 Tacklers = SummaryDataExtractor.extractTacklers(summary)

@@ -19,9 +19,12 @@ namespace PlayByPlayParserConsole.PlayEvent
         public string? Interceptor { get; set; }
         public string[]? Tacklers { get; set; }
         public PassType? PassType { get; set; }
+        public bool IsTouchdown { get; set; }
         public override string ToString()
         {
             string passString = $"{PlayType} - Type: {PassType}, Passer: {Passer}, Target: {Target}";
+
+            // add events during play
             if (IsCompleted)
             {
                 passString += $", COMPLETED for {PassingYards} yards";
@@ -35,7 +38,21 @@ namespace PlayByPlayParserConsole.PlayEvent
                 passString += $", INCOMPLETE";
             }
             
+            // add potential concluding events
+            if (IsTouchdown)
+            {
+                passString += $", TOUCHDOWN";
+            }
+            
             return passString;
+        }
+        public bool isScoringPlay()
+        {
+            if (IsTouchdown)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

@@ -17,6 +17,7 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Kickoff
             {
                 isReturned = SummaryDataExtractor.isReturned(summary),
                 Kicker = SummaryDataExtractor.extractKicker(summary),
+                IsTouchdown = SummaryDataExtractor.extractIsTouchdown(summary),
                 KickYards = SummaryDataExtractor.extractKickYards(summary),
                 Returner = SummaryDataExtractor.extractReturner(summary),
                 ReturnYards = SummaryDataExtractor.extractReturnYards(summary)

@@ -15,11 +15,27 @@ namespace PlayByPlayParserConsole.PlayEvent
         public string? Carrier { get; set; }
         public string[]? Tacklers { get; set; }
         public RunType? RunType { get; set; }
+        public bool IsTouchdown { get; set; }
 
         public override string ToString()
         {
             string runString = $"{PlayType} - Type: {RunType}, Carrier: {Carrier}, Yards: {RushingYards}";
+
+            // add potential concluding events
+            if (IsTouchdown)
+            {
+                runString += $", TOUCHDOWN";
+            }
+
             return runString;
+        }
+        public bool isScoringPlay()
+        {
+            if (IsTouchdown)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

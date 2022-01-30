@@ -13,10 +13,26 @@ namespace PlayByPlayParserConsole.PlayEvent
         public string? SackedPlayer { get; set; }
         public string? SackingPlayer { get; set; }
         public int SackYardage { get; set; }
+        public bool IsTouchdown { get; set; }
         public override string ToString()
         {
             string sackString = $"{PlayType} - Sacked: {SackedPlayer}, Sacked by: {SackingPlayer}, Yardage: {SackYardage} ";
+
+            // add potential concluding events
+            if (IsTouchdown)
+            {
+                sackString += $", TOUCHDOWN";
+            }
+
             return sackString;
+        }
+        public bool isScoringPlay()
+        {
+            if (IsTouchdown)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

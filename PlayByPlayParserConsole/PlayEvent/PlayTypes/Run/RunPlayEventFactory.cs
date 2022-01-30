@@ -21,6 +21,7 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
             {
                 Carrier = SummaryDataExtractor.extractCarrier(summary, runType),
                 RunType = runType,
+                IsTouchdown = SummaryDataExtractor.extractIsTouchdown(summary),
                 RushingYards = SummaryDataExtractor.extractRushingYards(summary),
                 Tacklers = SummaryDataExtractor.extractTacklers(summary)
             };

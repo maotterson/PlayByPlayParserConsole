@@ -20,5 +20,9 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Penalty
             penaltyString += isAccepted ? "Accepted" : "Declined";
             return penaltyString;
         }
+        public bool isScoringPlay()
+        {
+            return false;
+        }
     }
 }

@@ -17,7 +17,8 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.ExtraPoint
             {
                 SackedPlayer = SummaryDataExtractor.extractSackedPlayer(summary),
                 SackingPlayer = SummaryDataExtractor.extractSackingPlayer(summary),
-                SackYardage = SummaryDataExtractor.extractSackYardage(summary)
+                SackYardage = SummaryDataExtractor.extractSackYardage(summary),
+                IsTouchdown = SummaryDataExtractor.extractIsTouchdown(summary)
             };
 
             return playEvent;

@@ -16,6 +16,7 @@ namespace PlayByPlayParserConsole.PlayEvent
         public string? Returner { get; set; }
         public int ReturnYards { get; set; }
         public string[]? Tacklers { get; set; }
+        public bool IsTouchdown { get; set; }
         public override string ToString()
         {
             string kickString = $"{PlayType} - Kicker: {Kicker}, Kick Yards: {KickYards}";
@@ -25,7 +26,21 @@ namespace PlayByPlayParserConsole.PlayEvent
                 kickString += $", Returner: {Returner}, Return Yards: {ReturnYards}";
             }
 
+            // add potential concluding events
+            if (IsTouchdown)
+            {
+                kickString += $", TOUCHDOWN";
+            }
+
             return kickString;
+        }
+        public bool isScoringPlay()
+        {
+            if (IsTouchdown)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

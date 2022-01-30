@@ -9,5 +9,6 @@ namespace PlayByPlayParserConsole.Models
     internal interface IPlayEvent
     {
         public string PlayType { get; set; }
+        public bool isScoringPlay();
     }
 }

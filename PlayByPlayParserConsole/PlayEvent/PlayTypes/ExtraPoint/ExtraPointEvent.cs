@@ -12,6 +12,16 @@ namespace PlayByPlayParserConsole.PlayEvent
         public string PlayType { get; set; } = "ExtraPoint";
         public string? Kicker { get; set; }
         public bool isSuccessful { get; set; }
+
+        public bool isScoringPlay()
+        {
+            if (isSuccessful)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public override string ToString()
         {
             string patString = $"{PlayType} - Kicker: {Kicker}, ";

@@ -16,5 +16,9 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Spike
             string spikeString = $"{PlayType} - Passer: {Passer}";
             return spikeString;
         }
+        public bool isScoringPlay()
+        {
+            return false;
+        }
     }
 }

@@ -46,6 +46,12 @@ void outputPlayList(IEnumerable<Play> playList)
             continue;
         }
 
+        // make scoring plays stand out
+        if (play.PlayEvent.isScoringPlay())
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+        }
+
         // play type successfully parsed
         Console.Write($" {play.PlayEvent}\n");
     }
