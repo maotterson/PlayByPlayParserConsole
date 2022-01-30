@@ -1,6 +1,7 @@
 ﻿using PlayByPlayParserConsole.Models;
 using PlayByPlayParserConsole.PlayEvent;
 using PlayByPlayParserConsole.PlayEvent.Helpers;
+using PlayByPlayParserConsole.PlayEvent.PlayTypes.Extra_Point;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Kickoff;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass;
 using PlayByPlayParserConsole.PlayEvent.PlayTypes.Penalty;
@@ -25,7 +26,8 @@ namespace PlayByPlayParserConsole
             { "left tackle" , x => RunPlayEventFactory.Create(x) },
             { "right guard" , x => RunPlayEventFactory.Create(x) },
             { "left guard" , x => RunPlayEventFactory.Create(x) },
-            { "Penalty", x => PenaltyEventFactory.Create(x) }
+            { "Penalty", x => PenaltyEventFactory.Create(x) },
+            { "kicks extra point", x => ExtraPointFactory.Create(x) }
         };
 
         public static IPlayEvent? ExtractPlayEvent(string summary)

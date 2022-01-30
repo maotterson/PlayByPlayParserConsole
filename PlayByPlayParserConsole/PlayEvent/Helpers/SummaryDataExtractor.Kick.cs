@@ -9,11 +9,7 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
 {
     internal static partial class SummaryDataExtractor
     {
-        public static string extractKicker(string summary)
-        {
-            string regex = "^.*?(?= kicks off)";
-            return Regex.Match(summary,regex).Value;
-        }
+        
         public static string extractReturner(string summary)
         {
             string regex = "(?<=returned by )(.*?)(?= for)";
