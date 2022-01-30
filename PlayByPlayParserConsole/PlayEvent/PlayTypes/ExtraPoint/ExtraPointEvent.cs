@@ -10,7 +10,7 @@ namespace PlayByPlayParserConsole.PlayEvent
     internal class ExtraPointEvent : IPlayEvent
     {
         public string PlayType { get; set; } = "ExtraPoint";
-        public string Kicker { get; set; }
+        public string? Kicker { get; set; }
         public bool isSuccessful { get; set; }
         public override string ToString()
         {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Extra_Point
+namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.ExtraPoint
 {
     internal class ExtraPointFactory
     {

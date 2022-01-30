@@ -10,7 +10,7 @@ namespace PlayByPlayParserConsole.PlayEvent
     internal class KickoffEvent : IPlayEvent
     {
         public string PlayType { get; set; } = "Kickoff";
-        public string Kicker { get; set; }
+        public string? Kicker { get; set; }
         public int KickYards { get; set; }
         public bool isReturned { get; set; }
         public string? Returner { get; set; }
