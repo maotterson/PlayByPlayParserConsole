@@ -28,5 +28,11 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
             return summary.Contains(" touchdown");
         }
 
+        public static bool extractIsReturned(string summary)
+        {
+            bool isReturned = summary.Contains("returned by");
+            return isReturned;
+        }
+
     }
 }

@@ -16,7 +16,15 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Punt
             playEvent = new PuntEvent
             {
                 //todo
-                IsTouchdown = SummaryDataExtractor.extractIsTouchdown(summary)
+                IsTouchdown = SummaryDataExtractor.extractIsTouchdown(summary),
+                IsBlocked = SummaryDataExtractor.extractIsBlocked(summary),
+                IsReturned = SummaryDataExtractor.extractIsReturned(summary),
+                PuntBlocker = SummaryDataExtractor.extractPuntBlocker(summary),
+                Punter = SummaryDataExtractor.extractPunter(summary),
+                PuntReturner = SummaryDataExtractor.extractReturner(summary),
+                PuntYards = SummaryDataExtractor.extractPuntYards(summary),
+                ReturnYards = SummaryDataExtractor.extractReturnYards(summary)
+                
             };
 
             return playEvent;

@@ -27,10 +27,5 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
             int.TryParse(Regex.Match(summary, regex).Value, out int yards);
             return yards;
         }
-        public static bool isReturned(string Summary)
-        {
-            bool isReturned = Summary.Contains("returned by");
-            return isReturned;
-        }
     }
 }
