@@ -12,11 +12,15 @@ namespace PlayByPlayParserConsole.PlayEvent
         public string PlayType { get; set; } = "FieldGoal";
         public bool IsTouchdown { get; set; }
         public bool IsSuccessful { get; set; }
+        public int Yards { get; set; }
+        public string? Kicker { get; set; }
 
-        //todo
         public override string ToString()
         {
-            string fgString = $"{PlayType} - ";
+            string fgString = $"{PlayType} - Kicker: {Kicker}, Yardage: {Yards}";
+
+            fgString += IsSuccessful ? ", Successful" : ", Missed";
+
             // todo
             return fgString;
         }
