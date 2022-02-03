@@ -34,5 +34,10 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
             return isReturned;
         }
 
+        public static bool extractIsPenalty(string summary)
+        {
+            return summary.Contains("Penalty");
+        }
+
     }
 }

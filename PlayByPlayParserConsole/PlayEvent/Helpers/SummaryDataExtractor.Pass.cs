@@ -61,14 +61,19 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
             string regex = "^.*?(?= pass)";
             return Regex.Match(summary, regex).Value;
         }
-        public static string extractTarget(string summary, bool isIntercepted, bool isCompleted, bool isDefended)
+        public static string extractTarget(string summary, bool isIntercepted, bool isCompleted, bool isDefended, bool isPenalty)
         {
             string regexComplete = "(?<=to )(.*?)(?= for)";
             string regexIncomplete = "(?<=intended for )(.*)";
             string regexDefended = "(?<=intended for )(.*)(?= [(])";
             string regexIntercepted = "(?<=intended for )(.*)(?= is intercepted)";
+            string regexPenalty = "(?<=intended for )(.*)(?=\\.)";
 
-            if (isCompleted)
+            if (isPenalty)
+            {
+                return Regex.Match(summary, regexPenalty).Value;
+            }
+            else if (isCompleted)
             {
                 return Regex.Match(summary, regexComplete).Value;
             }

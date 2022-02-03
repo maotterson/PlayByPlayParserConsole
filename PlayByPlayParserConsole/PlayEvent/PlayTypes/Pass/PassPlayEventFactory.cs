@@ -17,15 +17,17 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Pass
             bool isCompleted = SummaryDataExtractor.isCompleted(summary);
             bool isIntercepted = SummaryDataExtractor.isIntercepted(summary);
             bool isDefended = SummaryDataExtractor.extractIsDefended(summary);
+            bool isPenalty = SummaryDataExtractor.extractIsPenalty(summary);
 
             playEvent = new PassPlayEvent
             {
                 IsCompleted = isCompleted,
                 Passer = SummaryDataExtractor.extractPasser(summary),
-                Target = SummaryDataExtractor.extractTarget(summary, isIntercepted, isCompleted, isDefended),
+                Target = SummaryDataExtractor.extractTarget(summary,  isIntercepted, isCompleted, isDefended, isPenalty),
                 PassingYards = SummaryDataExtractor.extractPassYards(summary),
                 IsIntercepted = isIntercepted,
                 IsDefended = isDefended,
+                IsPenalty = isPenalty,
                 Defender = SummaryDataExtractor.extractDefender(summary, isDefended),
                 IsTouchdown = SummaryDataExtractor.extractIsTouchdown(summary),
                 Interceptor = isIntercepted ? SummaryDataExtractor.extractInterceptor(summary) : null,

@@ -17,6 +17,7 @@ namespace PlayByPlayParserConsole.PlayEvent
         public bool IsCompleted { get; set; }
         public bool IsIntercepted { get; set; }
         public bool IsDefended { get; set; }
+        public bool IsPenalty { get; set; }
         public string? Interceptor { get; set; }
         public string? Defender { get; set; }
         public string[]? Tacklers { get; set; }
