@@ -16,7 +16,9 @@ namespace PlayByPlayParserConsole.PlayEvent
         public string? Target { get; set; }
         public bool IsCompleted { get; set; }
         public bool IsIntercepted { get; set; }
+        public bool IsDefended { get; set; }
         public string? Interceptor { get; set; }
+        public string? Defender { get; set; }
         public string[]? Tacklers { get; set; }
         public PassType? PassType { get; set; }
         public bool IsTouchdown { get; set; }
@@ -32,6 +34,10 @@ namespace PlayByPlayParserConsole.PlayEvent
             else if (IsIntercepted)
             {
                 passString += $", INTERCEPTED BY {Interceptor}";
+            }
+            else if (IsDefended)
+            {
+                passString += $", DEFENDED BY {Defender}";
             }
             else
             {

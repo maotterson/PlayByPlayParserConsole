@@ -31,6 +31,23 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
 
             return null;
         }
+        public static string extractDefender(string summary, bool isDefended)
+        {
+            if (!isDefended)
+            {
+                return "";
+            }
+            string regex = "(?<=defended by )(.*?)(?=[)])";
+            return Regex.Match(summary, regex).Value;
+        }
+        public static bool extractIsDefended(string summary)
+        {
+            if(summary.Contains("defended by"))
+            {
+                return true;
+            }
+            return false;
+        }
         public static bool isCompleted(string summary)
         {
             if (summary.Contains("pass complete"))
@@ -44,14 +61,24 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
             string regex = "^.*?(?= pass)";
             return Regex.Match(summary, regex).Value;
         }
-        public static string extractTarget(string summary, bool isCompleted)
+        public static string extractTarget(string summary, bool isIntercepted, bool isCompleted, bool isDefended)
         {
             string regexComplete = "(?<=to )(.*?)(?= for)";
             string regexIncomplete = "(?<=intended for )(.*)";
+            string regexDefended = "(?<=intended for )(.*)(?= [(])";
+            string regexIntercepted = "(?<=intended for )(.*)(?= is intercepted)";
 
             if (isCompleted)
             {
                 return Regex.Match(summary, regexComplete).Value;
+            }
+            else if (isDefended)
+            {
+                return Regex.Match(summary, regexDefended).Value;
+            }
+            else if (isIntercepted)
+            {
+                return Regex.Match(summary, regexIntercepted).Value;
             }
 
             return Regex.Match(summary, regexIncomplete).Value;
