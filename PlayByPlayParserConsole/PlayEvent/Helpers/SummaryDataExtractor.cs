@@ -11,11 +11,26 @@ namespace PlayByPlayParserConsole.PlayEvent.Helpers
     internal static partial class SummaryDataExtractor
     {
         // helper extractor methods used by multiple event types
-        public static string[] extractTacklers(string summary)
+        public static List<string> extractTacklers(string summary)
         {
-            string regex = "(?<=tackle by )(.*)(?=[)])";
+            List<string> tacklers = new List<string>();
+            string regexIsSharedTackle = "(?=[(]tackle by )(.*)(?=[)])";
+            string tackleSummary = Regex.Match(summary, regexIsSharedTackle).Value;
 
-            return new[] { Regex.Match(summary, regex).Value };
+            if (tackleSummary.Contains("and"))
+            {
+                string regexFirst = "(?<=tackle by )(.*)(?= and)";
+                string regexSecond = "(?<=and )(.*)(?=[)])";
+                tacklers.Add(Regex.Match(summary, regexFirst).Value);
+                tacklers.Add(Regex.Match(summary, regexSecond).Value);
+            }
+            else
+            {
+                string regex = "(?<=tackle by )(.*)(?=[)])";
+                tacklers.Add(Regex.Match(summary, regex).Value);
+            }
+
+            return tacklers;
         }
         public static string extractKicker(string summary)
         {

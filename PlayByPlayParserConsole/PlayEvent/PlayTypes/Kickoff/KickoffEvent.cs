@@ -15,7 +15,7 @@ namespace PlayByPlayParserConsole.PlayEvent
         public bool isReturned { get; set; }
         public string? Returner { get; set; }
         public int ReturnYards { get; set; }
-        public string[]? Tacklers { get; set; }
+        public List<string>? Tacklers { get; set; }
         public bool IsTouchdown { get; set; }
         public override string ToString()
         {

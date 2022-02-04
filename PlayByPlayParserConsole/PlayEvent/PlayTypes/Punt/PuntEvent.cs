@@ -17,6 +17,7 @@ namespace PlayByPlayParserConsole.PlayEvent.PlayTypes.Punt
         public string? PuntReturner { get; set; }
         public string? PuntBlocker { get; set; }
         public int ReturnYards { get; set; }
+        public List<string>? Tacklers { get; set; }
         public bool IsTouchdown { get; set; }
 
         public override string ToString()

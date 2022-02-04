@@ -20,7 +20,7 @@ namespace PlayByPlayParserConsole.PlayEvent
         public bool IsPenalty { get; set; }
         public string? Interceptor { get; set; }
         public string? Defender { get; set; }
-        public string[]? Tacklers { get; set; }
+        public List<string>? Tacklers { get; set; }
         public PassType? PassType { get; set; }
         public bool IsTouchdown { get; set; }
         public override string ToString()
@@ -50,7 +50,15 @@ namespace PlayByPlayParserConsole.PlayEvent
             {
                 passString += $", TOUCHDOWN";
             }
-            
+            else if (Tacklers != null)
+            {
+                passString += $", Tacklers: ";
+                foreach (string t in Tacklers)
+                {
+                    passString += $"{t}, ";
+                }
+            }
+
             return passString;
         }
         public bool isScoringPlay()

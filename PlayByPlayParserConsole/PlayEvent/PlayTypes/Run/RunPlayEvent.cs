@@ -13,7 +13,7 @@ namespace PlayByPlayParserConsole.PlayEvent
         public string PlayType { get; set; } = "Run";
         public int RushingYards { get; set; }
         public string? Carrier { get; set; }
-        public string[]? Tacklers { get; set; }
+        public List<string>? Tacklers { get; set; }
         public RunType? RunType { get; set; }
         public bool IsTouchdown { get; set; }
 
@@ -25,6 +25,14 @@ namespace PlayByPlayParserConsole.PlayEvent
             if (IsTouchdown)
             {
                 runString += $", TOUCHDOWN";
+            }
+            else if(Tacklers != null)
+            {
+                runString += $", Tacklers: ";
+                foreach (string t in Tacklers)
+                {
+                    runString += $"{t}, ";
+                }
             }
 
             return runString;
